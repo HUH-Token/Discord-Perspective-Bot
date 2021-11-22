@@ -1,0 +1,50 @@
+{
+  "name": "perspective_bot",
+  "version": "1.0.1",
+  "description": "Discord bot that keeps track of user karma based on the language they use",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krypton-unite/Perspective-Bot.git"
+  },
+  "scripts": {
+    "test": "mocha --require esm --timeout 5000",
+    "test-coverage": "nyc mocha --require esm --report lcovonly -- -R spec",
+    "codecov": "codecov --disable=gcov",
+    "prod:start": "pm2-runtime start ecosystem.config.js --env production",
+    "prod:build": "webpack --config webpack.prod.js",
+    "dev:start": "webpack-dev-server --inline --hot",
+    "dev:build": "webpack --config webpack.dev.js",
+    "build": "npm run prod:build",
+    "start": "npm run prod:start",
+    "heroku:logs": "heroku logs --tail",
+    "heroku:deploy": "git push heroku master"
+  },
+  "author": "Daniel Kaminski de Souza",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@pm2/pm2-version-check": "^1.0.3",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "googleapis": "^48.0.0",
+    "mongodb": "^3.6.3",
+    "pm2": "^4.5.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^7.18.0",
+    "eslint-config-google": "^0.14.0",
+    "esm": "^3.2.25",
+    "html-webpack-plugin": "^4.5.1",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "webpack": "^5.16.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-dev-middleware": "^4.1.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^5.7.3",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
