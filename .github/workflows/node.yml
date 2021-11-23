@@ -17,8 +17,15 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
+    - name: npm install
       run: |
         npm ci
+        npm install -g codecov 
+        npm i -D nyc
+      env:
+        CI: true
+    - name: Run coverage workflows
+      run: |
+        npm run test-coverage && npm run codecov
       env:
         CI: true
